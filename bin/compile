@@ -30,8 +30,6 @@
 # ## Context
 
 # Fail fast and fail hard.
-pwd
-exit 1
 
 set -eo pipefail
 
@@ -282,6 +280,16 @@ opencv_url="ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/${opencv_dir}.tar.gz"
 cache_target=${cache}/${cmake_file}
 build_target=${build}/.heroku
 target=/app/.heroku
+
+FILE="../buildpacks/opencv/opencv-2.4.5.tar.gz"
+ 
+if [ -f $FILE ];
+then
+   echo "File $FILE exists"
+else
+   echo "File $FILE does not exists"
+fi
+exit 1
 
 if [ ! -f ${cache_target} ]; then
   echo "No cached compile detected. Bulding..." | indent
