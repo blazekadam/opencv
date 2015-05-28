@@ -30,6 +30,9 @@
 # ## Context
 
 # Fail fast and fail hard.
+pwd
+exit 1
+
 set -eo pipefail
 
 # Prepend proper path for virtualenv hackery. This will be deprecated soon.
