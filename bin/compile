@@ -290,7 +290,7 @@ if [ ! -f ${cache_target} ]; then
   tar zxf ${cmake_file}
   cd ${cmake_tar_dir}
   ./bootstrap --prefix=${target} | indent
-  make | indent
+  make -j5 | indent
   make install | indent
   cd ..
 
@@ -317,7 +317,8 @@ if [ ! -f ${cache_target} ]; then
   cd ${opencv_dir}
   mkdir build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX=${target} -DCMAKE_FIND_ROOT_PATH=${target} -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=OFF -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" .. | indent
+  cmake -G"Unix Makefiles" -DCMAKE_INSTALL_PREFIX=${target} -DCMAKE_FIND_ROOT_PATH=${target} -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_SHARED_LIBS=OFF -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" .. | indent
+  make -j5 | indent
   make install | indent
   cd ..
 
