@@ -281,15 +281,7 @@ cache_target=${cache}/${cmake_file}
 build_target=${build}/.heroku
 target=/app/.heroku
 
-FILE="/tmp/buildpacks/opencv/opencv-2.4.5.tar.gz"
- 
-if [ -f $FILE ];
-then
-   echo "File $FILE exists"
-else
-   echo "File $FILE does not exists"
-fi
-exit 1
+CV_TMP_FILE="/tmp/buildpacks/opencv/opencv-2.4.5.tar.gz"
 
 if [ ! -f ${cache_target} ]; then
   echo "No cached compile detected. Bulding..." | indent
@@ -323,8 +315,8 @@ if [ ! -f ${cache_target} ]; then
 
   echo "Compiling OpenCV v${opencv_version}..." | indent
   #Compile OpenCV
-  curl -s ${opencv_url} > ${opencv_file}
-  tar xf ${opencv_file}
+  #curl -s ${opencv_url} > ${opencv_file}
+  tar xf $CV_TMP_FILE
   cd ${opencv_dir}
   mkdir build
   cd build
