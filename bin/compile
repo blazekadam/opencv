@@ -281,7 +281,7 @@ cache_target=${cache}/${cmake_file}
 build_target=${build}/.heroku
 target=/app/.heroku
 
-FILE="../buildpacks/opencv/opencv-2.4.5.tar.gz"
+FILE="/tmp/buildpacks/opencv/opencv-2.4.5.tar.gz"
  
 if [ -f $FILE ];
 then
